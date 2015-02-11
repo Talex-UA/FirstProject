@@ -6,22 +6,25 @@ import java.util.Scanner;
 public class Anagram {
     public static void main(String[] args) {
         System.out.println("Enter first phrase");
-        Scanner input1 = new Scanner(System.in);
-        String s1 = input1.nextLine();
+        String string1= getString();
 
         System.out.println("Enter second phrase");
-        Scanner input2 = new Scanner(System.in);
-        String s2 = input2.nextLine();
+        String string2= getString();
 
-        if (areAnagrams(s1,s2)){
+        if (areAnagrams(string1,string2)){
             System.out.println("These phrases are anagrams");
         } else System.out.println("These phrases are NOT anagrams");
 
     }
 
-    public static boolean areAnagrams(String s1, String s2){
-        char [] array1 = s1.toLowerCase().replaceAll("\\s+","").toCharArray();
-        char [] array2 = s2.toLowerCase().replaceAll("\\s+","").toCharArray();
+    private static String getString() {
+        Scanner input = new Scanner(System.in);
+        return input.nextLine();
+    }
+
+    public static boolean areAnagrams(String string1, String string2){
+        char [] array1 = string1.toLowerCase().replaceAll("\\s+","").toCharArray();
+        char [] array2 = string2.toLowerCase().replaceAll("\\s+","").toCharArray();
         Arrays.sort(array1);
         Arrays.sort(array2);
         return Arrays.equals(array1, array2);
