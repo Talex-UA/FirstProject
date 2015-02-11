@@ -1,65 +1,45 @@
 package Tasks;
 
-import java.util.InputMismatchException;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ArrayNeighbors {
     public static void main(String[] args) {
-        int [] array=createarray();
-        findneighborsindex(array);
+        int [] intArray=getUserInput();
+        findNeighborsIndex(intArray);
     }
 
-    public static void findneighborsindex(int[] array) {
-        boolean b = true;
-        for (int j = 1; b; j++) {
-            for (int i = 0; i < array.length - j; i++) {
-                int x = Math.abs(array[i] - array[i + j]);
-                if (x == 1) {System.out.println(i); b = false;}
-            }
-        }
-    }
-
-    public static int [] createarray(){
-        Scanner input = new Scanner(System.in);
-        int length=0;
-
-        while (true){
+    private static int [] getUserInput() {
+        Scanner input=new Scanner(System.in);
+        String [] stringArray;
+        int [] array;
+        do{
+            System.out.println("Please, enter your array using spaces between numbers");
+            stringArray = input.nextLine().split("[ ]+");
+            array = new int[stringArray.length];
             try{
-                System.out.println("Enter array length");
-                length=input.nextInt();
+                for (int i = 0; i < array.length; i++) {
+                    array[i]=Integer.parseInt(stringArray[i]);
+                }
             }
-
-            catch (InputMismatchException e){}
-            catch (NoSuchElementException | IllegalStateException e) {
-                System.out.println("Something went wrong, closing");
-                System.exit(0);
+            catch(NumberFormatException e){
+                System.out.println("You can use numbers only");
+                array=new int[0];
             }
+        } while (array.length<1);
 
-            if (length>=1) break;
-
-            System.out.println("Please, try again");
-            input.skip(".*");
-        }
-
-        System.out.println("Fill your array");
-        int [] array=new int[length];
-
-        for (int i = 0; i < length; i++) {
-            try{
-                array[i]=input.nextInt();
-            }
-
-            catch (InputMismatchException e){
-                System.out.println("Try again");
-                input.skip(".*");
-                i--;
-            }
-            catch (NoSuchElementException | IllegalStateException e) {
-                System.out.println("Something went wrong, closing");
-                System.exit(0);
-            }
-        }
         return array;
     }
+
+    public static void findNeighborsIndex(int[] array) {
+        for (int distance=0; true; distance++) {
+            for (int i = 0; i < array.length-1; i++) {
+                if (Math.abs(array[i]-array[i+1])==distance){
+                    System.out.println(i);
+                    return;
+                }
+            }
+        }
+
+    }
+
 }
