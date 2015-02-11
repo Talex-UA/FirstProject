@@ -30,6 +30,7 @@ public class PrimeNumbers {
         System.out.println("2");
         for (int j = 3; j < number + 1; j=j+2) {
             finder:{
+                if ((j%3==0 && j!=3)|| (j%5==0 && j!=5)) break finder;
             int root = (int) Math.sqrt(j);
                 for (int k = root; k > 1; k--) {
                     if (j % k == 0) break finder;
