@@ -8,25 +8,24 @@ public class PrimeNumbers {
     public static void main(String args[]) throws java.io.IOException {
         Scanner input = new Scanner(System.in);
         int number = 0;
-        System.out.println("Please, enter your number.");
 
-        while (number==0) {
+        do{
+            System.out.println("Please, enter your number (bigger or equal to 2).");
             try {
                 number = input.nextInt();
             }
 
-            catch (InputMismatchException e){}
+            catch (InputMismatchException e){
+                System.out.println("It wasn't number, try again");
+                }
             catch (NoSuchElementException | IllegalStateException e) {
                 System.out.println("Something went wrong, closing");
                 return;
             }
 
-            if (number >= 2) break;
-
-            System.out.println("Please, try again");
             input.skip(".*");
-            number=0;
-        }
+        } while (number<2);
+
 
         System.out.println("2");
         for (int j = 3; j < number + 1; j=j+2) {
