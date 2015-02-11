@@ -1,5 +1,7 @@
 package Tasks;
 
+import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ArrayNeighbors {
@@ -19,21 +21,25 @@ public class ArrayNeighbors {
     }
 
     public static int [] createarray(){
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter array length");
-        int length;
+        Scanner input = new Scanner(System.in);
+        int length=0;
 
         while (true){
             try{
-                length=in.nextInt();
-                if (length<1) throw new RuntimeException();
-                break;
-            }
-            catch (Exception e){
-                System.out.println("Try again");
-                in.skip(".*");
+                System.out.println("Enter array length");
+                length=input.nextInt();
             }
 
+            catch (InputMismatchException e){}
+            catch (NoSuchElementException | IllegalStateException e) {
+                System.out.println("Something went wrong, closing");
+                System.exit(0);
+            }
+
+            if (length>=1) break;
+
+            System.out.println("Please, try again");
+            input.skip(".*");
         }
 
         System.out.println("Fill your array");
@@ -41,12 +47,17 @@ public class ArrayNeighbors {
 
         for (int i = 0; i < length; i++) {
             try{
-                array[i]=in.nextInt();
+                array[i]=input.nextInt();
             }
-            catch (Exception e){
+
+            catch (InputMismatchException e){
                 System.out.println("Try again");
-                in.skip(".*");
+                input.skip(".*");
                 i--;
+            }
+            catch (NoSuchElementException | IllegalStateException e) {
+                System.out.println("Something went wrong, closing");
+                System.exit(0);
             }
         }
         return array;
