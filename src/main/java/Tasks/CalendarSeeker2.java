@@ -26,7 +26,7 @@ public class CalendarSeeker2 {
                 System.out.println("Please, enter the date using DD.MM.YYYY format");
                 String[] stringArray = input.nextLine().split("\\.");
                 year = Integer.parseInt(stringArray[2]);
-                month = Integer.parseInt(stringArray[1]) - 1;
+                month = Integer.parseInt(stringArray[1]);
                     if (month<1 || month>12) throw new NumberFormatException();
                 day = Integer.parseInt(stringArray[0]);
                     if (month==1 || month==3 || month==5 || month==7 || month==8 || month==10 || month==12){
@@ -41,7 +41,7 @@ public class CalendarSeeker2 {
                 System.out.println("Please, use given format");
             }
         } while (year==0 || month==0 || day==0);
-        c.set(year, month, day);
+        c.set(year, month-1, day);
         return c;
 
     }
