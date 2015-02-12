@@ -33,12 +33,13 @@ public class CalendarSeeker2 {
                         if (day<1 || day>31) throw new NumberFormatException();
                     } else if(month==4 || month==6 || month==9 || month==11){
                         if (day<1 || day>30) throw new NumberFormatException();
-                    }else if (year%4==0){
+                    }else if (year%4==0 && year%100==0 && year%400==0){
                         if (day<1 || day>29) throw new NumberFormatException();
                     } else if (day<1 || day>28) throw new NumberFormatException();
             }
             catch (NumberFormatException e){
                 System.out.println("Please, use given format");
+                day=0;
             }
         } while (year==0 || month==0 || day==0);
         c.set(year, month-1, day);
