@@ -15,13 +15,13 @@ public class CalendarSeeker_4methods {
         printDayName(c);
     }
 
-    private static Calendar setUserDate(UserIntInput userInput) {
+    public static Calendar setUserDate(UserIntInput userInput) {
         Calendar c = Calendar.getInstance();
         c.set(userInput.year, userInput.month-1, userInput.day);
         return c;
     }
 
-    private static UserIntInput getUserInput(UserIntInput userInput) {
+    public static UserIntInput getUserInput(UserIntInput userInput) {
         Scanner input = new Scanner(System.in);
         do{
             try {
@@ -47,7 +47,7 @@ public class CalendarSeeker_4methods {
         return userInput;
     }
 
-    private static void printDayName(Calendar c) {
+    public static void printDayName(Calendar c) {
         DateFormatSymbols dfs = new DateFormatSymbols(Locale.ENGLISH);
         String [] weekdays=dfs.getWeekdays();
         System.out.println(weekdays[c.get(Calendar.DAY_OF_WEEK)]);
