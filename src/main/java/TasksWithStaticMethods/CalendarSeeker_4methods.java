@@ -48,10 +48,5 @@ public class CalendarSeeker_4methods {
         System.out.println(weekdays[c.get(Calendar.DAY_OF_WEEK)]);
     }
 
-    static class UserIntInput {
-        int year;
-        int month;
-        int day;
-    }
 
 }
