@@ -21,6 +21,7 @@ public class PrimeNumbers_4methods {
 
     public static ArrayList<Integer> getPrimeNumbersArray(int userInput) {
         ArrayList<Integer> primeNumbersList = new ArrayList<>();
+        if (userInput<2) return primeNumbersList;
         primeNumbersList.add(2);
         for (int j = 3; j < userInput + 1; j=j+2) {
             finder:{
