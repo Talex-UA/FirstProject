@@ -7,7 +7,7 @@ public class UserIntInput {
 
     UserIntInput(){}
 
-    UserIntInput(int year, int month, int day){
+    public UserIntInput(int day, int month, int year){
         this.day=day;
         this.month=month;
         this.year=year;
