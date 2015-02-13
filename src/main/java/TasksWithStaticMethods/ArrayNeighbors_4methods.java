@@ -36,6 +36,9 @@ public class ArrayNeighbors_4methods {
     }
 
     public static int findNeighborsIndex(int[] array) {
+        if (array.length==1) {
+            return -1;
+        }
         for (int distance=0; true; distance++) {
             for (int i = 0; i < array.length-1; i++) {
                 if (Math.abs(array[i]-array[i+1])==distance){
