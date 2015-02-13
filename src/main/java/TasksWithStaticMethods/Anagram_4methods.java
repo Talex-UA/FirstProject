@@ -33,10 +33,6 @@ public class Anagram_4methods {
         Arrays.sort(array2);
         return Arrays.equals(array1, array2);
     }
-    static class UserInput {
-        String input1;
-        String input2;
-    }
 
 }
 
