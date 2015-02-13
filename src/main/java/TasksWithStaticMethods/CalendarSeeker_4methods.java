@@ -31,7 +31,7 @@ public class CalendarSeeker_4methods {
                     if (userInput.day < 1 || userInput.day > 31) throw new NumberFormatException();
                 } else if (userInput.month == 4 || userInput.month == 6 || userInput.month == 9 || userInput.month == 11) {
                     if (userInput.day < 1 || userInput.day > 30) throw new NumberFormatException();
-                } else if (userInput.year % 4 == 0 && userInput.year % 100 == 0 && userInput.year % 400 == 0) {
+                } else if ((userInput.year % 4 == 0 && userInput.year % 100 != 0) || (userInput.year % 4 == 0 && userInput.year % 100 == 0 && userInput.year % 400 == 0)) {
                     if (userInput.day < 1 || userInput.day > 29) throw new NumberFormatException();
                 } else if (userInput.day < 1 || userInput.day > 28) throw new NumberFormatException();
             } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
