@@ -21,6 +21,7 @@ public class PrimeNumbers_4methods {
             }
             int root = (int) Math.sqrt(j);
             boolean isPrime = true;
+            if (root%2==0) root--;
             for (int k = root; k > 1; k -= 2) {
                 if (j % k == 0) {
                     isPrime = false;
