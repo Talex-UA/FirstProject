@@ -4,9 +4,7 @@ import java.util.Scanner;
 
 public class ArrayNeighbors_4methods {
     public static void main(String[] args) {
-        int [] intArray=getUserInput();
-        int index = findNeighborsIndex(intArray);
-        printIndex(index);
+        printIndex(findNeighborsIndex(getUserInput()));
     }
 
     public static void printIndex(int index) {
@@ -39,13 +37,17 @@ public class ArrayNeighbors_4methods {
         if (array.length==1) {
             return -1;
         }
-        for (int distance=0; true; distance++) {
-            for (int i = 0; i < array.length-1; i++) {
-                if (Math.abs(array[i]-array[i+1])==distance){
-                    return i;
-                }
+
+        int currentDistance=Integer.MAX_VALUE;
+        int currentIndex = 0;
+
+        for (int i = 0; i < array.length-1; i++) {
+            if (Math.abs(array[i]-array[i+1])<currentDistance){
+                currentDistance=Math.abs(array[i]-array[i+1]);
+                currentIndex=i;
             }
         }
+        return currentIndex;
 
     }
 }

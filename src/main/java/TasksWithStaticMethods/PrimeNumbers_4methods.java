@@ -1,35 +1,33 @@
 package TasksWithStaticMethods;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.util.*;
 
 public class PrimeNumbers_4methods {
-    public static void main(String args[]) throws java.io.IOException {
-
-        int userInput = getUserInput();
-        ArrayList<Integer> primeNumbersArray = getPrimeNumbersArray(userInput);
-        printArrayList(primeNumbersArray);
+    public static void main(String args[]) {
+        printArrayList(getPrimeNumbersArray(getUserInput()));
     }
 
-    public static void printArrayList(ArrayList<Integer> primeNumbersArray) {
-        for(Integer x:primeNumbersArray){
-            System.out.println(x);
-        }
+    public static void printArrayList(List<Integer> primeNumbersArray) {
+        primeNumbersArray.forEach(System.out::println);
     }
 
-    public static ArrayList<Integer> getPrimeNumbersArray(int userInput) {
-        ArrayList<Integer> primeNumbersList = new ArrayList<>();
-        if (userInput<2) return primeNumbersList;
+    public static List<Integer> getPrimeNumbersArray(int userInput) {
+        List<Integer> primeNumbersList = new ArrayList<>();
+        if (userInput < 2) return primeNumbersList;
         primeNumbersList.add(2);
-        for (int j = 3; j < userInput + 1; j=j+2) {
-            finder:{
-                if ((j%3==0 && j!=3)|| (j%5==0 && j!=5)|| (j%7==0 && j!=7)) break finder;
-                int root = (int) Math.sqrt(j);
-                for (int k = root; k > 1; k--) {
-                    if (j % k == 0) break finder;
+        for (int j = 3; j <= userInput; j = j + 2) {
+            if ((j % 3 == 0 && j != 3) || (j % 5 == 0 && j != 5) || (j % 7 == 0 && j != 7)) {
+                continue;
+            }
+            int root = (int) Math.sqrt(j);
+            boolean isPrime = true;
+            for (int k = root; k > 1; k -= 2) {
+                if (j % k == 0) {
+                    isPrime = false;
+                    break;
                 }
+            }
+            if (isPrime) {
                 primeNumbersList.add(j);
             }
         }
@@ -40,22 +38,18 @@ public class PrimeNumbers_4methods {
         Scanner input = new Scanner(System.in);
         int number = 0;
 
-        do{
+        do {
             System.out.println("Please, enter your number (bigger or equal to 2).");
             try {
                 number = input.nextInt();
-            }
-
-            catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("It wasn't number, try again");
-            }
-            catch (NoSuchElementException | IllegalStateException e) {
+            } catch (NoSuchElementException | IllegalStateException e) {
                 System.out.println("Something went wrong, closing");
                 System.exit(0);
             }
 
-            input.skip(".*");
-        } while (number<2);
+        } while (number < 2);
         return number;
     }
 }

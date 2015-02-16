@@ -27,6 +27,9 @@ public class Anagram_4methods {
     }
 
     public static boolean areAnagrams(UserInput userInput){
+        if (userInput.input1==null || userInput.input2==null){
+            return false;
+        }
         char [] array1 = userInput.input1.toLowerCase().replaceAll("\\s+","").toCharArray();
         char [] array2 = userInput.input2.toLowerCase().replaceAll("\\s+","").toCharArray();
         Arrays.sort(array1);
