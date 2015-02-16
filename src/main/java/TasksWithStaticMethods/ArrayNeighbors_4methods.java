@@ -34,6 +34,11 @@ public class ArrayNeighbors_4methods {
     }
 
     public static int findNeighborsIndex(int[] array) {
+        if (array==null) {
+            System.out.println("You shall not pass! Exception to be thrown");
+            throw new NullPointerException();
+        }
+
         if (array.length==1) {
             return -1;
         }

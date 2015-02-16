@@ -11,6 +11,11 @@ public class CalendarSeeker_4methods {
     }
 
     public static Calendar setUserDate(UserIntInput userInput) {
+        if (userInput==null){
+            System.out.println("You shall not pass! Exception to be thrown");
+            throw new NullPointerException();
+        }
+
         Calendar c = Calendar.getInstance();
         c.set(userInput.year, userInput.month - 1, userInput.day);
         return c;
