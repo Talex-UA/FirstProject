@@ -2,9 +2,16 @@ package mainTests;
 
 import TasksWithStaticMethods.ArrayNeighbors_4methods;
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.Timeout;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 public class ArrayNeighborsTest {
+
+    @Rule
+    public Timeout timeout = new Timeout(1000);
 
     @Test
     public void negativeNumbersTest() {
@@ -33,7 +40,6 @@ public class ArrayNeighborsTest {
         int result = ArrayNeighbors_4methods.findNeighborsIndex(array);
         Assert.assertTrue(result == 0);
     }
-
     @Test
     public void firstMinNextNumberTest() {
         int[] array = new int[]{10, 15, 2, 3, 4, 50};
