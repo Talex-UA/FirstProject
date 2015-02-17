@@ -74,4 +74,9 @@ public class ArrayNeighborsTest {
         int result = ArrayNeighbors_4methods.findNeighborsIndex(array);
         Assert.assertTrue(result == 0);
     }
+
+    @Test(expected = Exception.class)
+    public void nullTest() {
+        int result = ArrayNeighbors_4methods.findNeighborsIndex(null);
+    }
 }

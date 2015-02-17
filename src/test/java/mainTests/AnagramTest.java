@@ -132,4 +132,9 @@ public class AnagramTest {
         boolean result = Anagram_4methods.areAnagrams(new UserInput(first, second));
         Assert.assertTrue(result);
     }
+
+    @Test(expected = Exception.class)
+    public void nullTest() {
+        boolean result = Anagram_4methods.areAnagrams(new UserInput(null, null));
+    }
 }
